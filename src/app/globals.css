@@ -1,0 +1,46 @@
+:root {
+  --white: #FFF;
+  --black: #000;
+
+  --primary-500: #9F99E3;
+  --accent-1-500: #D591D5;
+  --accent-2-500: #99D4D8;
+
+  --neutral-25: #7E7685;
+  --neutral-50: #746C7B;
+  --neutral-100: #69616F;
+  --neutral-200: #5E5665;
+  --neutral-300: #534D5B;
+  --neutral-400: #494252;
+  --neutral-500: #403A49;
+  --neutral-600: #393341;
+  --neutral-700: #322D3A;
+  --neutral-800: #2C2733;
+  --neutral-900: #26232D;
+}
+
+
+.body {
+  background-color: var(--neutral-700);
+  border-top: 8px solid var(--primary-500);
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.main {
+  padding-block: 120px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section {
+  max-width: 80rem;
+  width: 100%;
+}
+
+.bold {
+  font-weight: 700;
+}

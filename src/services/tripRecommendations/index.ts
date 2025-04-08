@@ -13,6 +13,7 @@ export type TripRecommendationBody = {
     rarity: "0" | "1" | "2" | "3" | "4";
   };
 };
+
 export const getTripRecommendations = async (body: TripRecommendationBody) => {
   return await apiFetch("/recommend_trips", {
     method: "POST",

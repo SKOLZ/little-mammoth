@@ -1,0 +1,45 @@
+%text {
+  color: var(--white);
+}
+
+.title-1 {
+  @extend %text;
+  font-family: var(--font-gabriela);
+  font-size: 1.5rem;
+  line-height: 2rem;
+
+  &.primary {
+    color: var(--primary);
+  }
+}
+
+.title-2 {
+  @extend %text;
+  font-family: var(--font-cairo);
+  font-size: 3rem;
+  line-height: 4rem;
+  font-weight: 700;
+}
+
+.text-1 {
+  @extend %text;
+  font-family: var(--font-cairo);
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-2 {
+  @extend %text;
+  font-family: var(--font-cairo);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+
+  &.accent-1 {
+    color: var(--accent-1-500);
+  }
+
+  &.accent-2 {
+    color: var(--accent-2-500);
+  }
+}

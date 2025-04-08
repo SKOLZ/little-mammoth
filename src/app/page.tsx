@@ -1,4 +1,5 @@
 import { getTripRecommendations } from "@/services/tripRecommendations";
+import { Logo } from "./_components/logo";
 import styles from "./styles.module.scss";
 
 export default async function Home() {
@@ -15,6 +16,9 @@ export default async function Home() {
   });
 
   return (
-    <div className={styles.fooBar}>{JSON.stringify(tripRecommendations)}</div>
+    <section className={`section ${styles.mainSection}`}>
+      <Logo typeLogo="full" />
+      <div>{JSON.stringify(tripRecommendations)}</div>
+    </section>
   );
 }
