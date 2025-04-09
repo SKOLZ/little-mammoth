@@ -14,7 +14,9 @@ export type TripRecommendationBody = {
   };
 };
 
-export const getTripRecommendations = async (body: TripRecommendationBody) => {
+export const getTripRecommendations = async <T>(
+  body: TripRecommendationBody
+): Promise<T> => {
   return await apiFetch("/recommend_trips", {
     method: "POST",
     body: JSON.stringify(body),

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Cairo, Gabriela } from "next/font/google";
-import "./reset.css";
-import "./globals.css";
-import "./typography.scss";
+import "../styles/globals.scss";
 import { Footer } from "./_components/footer";
 
 const gabriela = Gabriela({
@@ -30,6 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta name="apple-mobile-web-app-title" content="Little Mammoth" />
       <body className={`${gabriela.variable} ${cairo.variable} body`}>
         <main className="main">{children}</main>
         <Footer />

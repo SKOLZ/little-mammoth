@@ -1,0 +1,35 @@
+.recommendedTrip {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 20px 40px;
+  border-radius: 8px;
+  background-color: var(--neutral-600);
+  border: 1px solid var(--neutral-500);
+
+  &.featured {
+    border-color: var(--primary-500);
+  }
+}
+
+.recommendedTripField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+
+  &.recommendedTripFieldBalance {
+    gap: 10px;
+  }
+}
+
+.recommendedTripFieldBalanceField {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.recommendedTripFieldBalanceValue {
+  flex: 1;
+  text-align: end;
+}
