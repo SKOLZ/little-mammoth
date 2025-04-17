@@ -1,0 +1,20 @@
+@use "typography";
+
+.button {
+  @extend .title-1;
+  --darker-primary: oklch(from var(--primary-500) calc(l - 0.1) c h);
+  border-radius: 8px;
+  padding: 0.375rem 3rem;
+  background-color: var(--primary-500);
+  border: 2px solid var(--darker-primary);
+  color: var(--white);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  -webkit-text-stroke: 4px var(--darker-primary);
+  paint-order: stroke fill;
+  transition: background 0.5s ease;
+
+  &:hover {
+    background-color: var(--darker-primary);
+  }
+}
