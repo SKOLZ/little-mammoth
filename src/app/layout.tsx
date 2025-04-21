@@ -12,7 +12,7 @@ const gabriela = Gabriela({
 const cairo = Cairo({
   variable: "--font-cairo",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["300", "400", "700"],
 });
 
 export const metadata: Metadata = {
