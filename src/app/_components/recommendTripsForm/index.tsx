@@ -1,6 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import { createFormHook, createFormHookContexts } from "@tanstack/react-form";
+import {
+  createFormHook,
+  createFormHookContexts,
+  useTransform,
+} from "@tanstack/react-form";
 import { Button } from "../button";
 import { Input } from "../input";
 import { z } from "zod";
@@ -8,6 +13,8 @@ import cn from "classnames";
 import styles from "./styles.module.scss";
 import recommendTripsSubmitAction from "./action";
 import { useActionState } from "react";
+import { formOpts } from "./formOptions";
+import { initialFormState, mergeForm } from "@tanstack/react-form/nextjs";
 
 const { fieldContext, formContext } = createFormHookContexts();
 
@@ -25,18 +32,12 @@ const { useAppForm: useRecommendedTripsForm } = createFormHook({
 });
 
 export const RecommendTripsForm: React.FC = () => {
+  const [state, action] = useActionState(
+    recommendTripsSubmitAction,
+    initialFormState
+  );
   const form = useRecommendedTripsForm({
-    defaultValues: {
-      constraints: {
-        weight: 0,
-        budget: 0,
-      },
-      resource: {
-        type: "",
-        tier: "",
-        rarity: "",
-      },
-    },
+    ...formOpts,
     validators: {
       onChange: z.object({
         constraints: z.object({
@@ -50,18 +51,25 @@ export const RecommendTripsForm: React.FC = () => {
         }),
       }),
     },
+    transform: useTransform(
+      (baseForm) => mergeForm(baseForm, state ?? {}),
+      [state]
+    ),
     onSubmit: ({ value }) => {
       console.log("submit", value);
       // Do something with form data
       alert(JSON.stringify(value, null, 2));
     },
   });
-  const [state, action] = useActionState(recommendTripsSubmitAction, undefined);
+
+  console.log({ state });
   return (
     <form
       action={action as never}
-      onSubmit={() => {
-        form.handleSubmit();
+      method="post" // Ensure the form uses POST
+      onSubmit={(e) => {
+        // e.preventDefault(); // Prevent default form submission
+        form.handleSubmit(); // Use TanStack's form submission handler
       }}
       className={styles.recommendTripsForm}
     >
@@ -72,6 +80,7 @@ export const RecommendTripsForm: React.FC = () => {
             <form.AppField name="constraints.weight">
               {(field) => (
                 <field.Input
+                  name={field.name}
                   type="number"
                   label="Weight"
                   value={field.state.value}
@@ -83,6 +92,7 @@ export const RecommendTripsForm: React.FC = () => {
             <form.AppField name="constraints.budget">
               {(field) => (
                 <field.Input
+                  name={field.name}
                   type="number"
                   label="Budget"
                   value={field.state.value}
@@ -99,6 +109,7 @@ export const RecommendTripsForm: React.FC = () => {
             <form.AppField name="resource.type">
               {(field) => (
                 <field.Input
+                  name={field.name}
                   type="text"
                   label="Type"
                   value={field.state.value}
@@ -110,6 +121,7 @@ export const RecommendTripsForm: React.FC = () => {
             <form.AppField name="resource.tier">
               {(field) => (
                 <field.Input
+                  name={field.name}
                   type="text"
                   label="Tier"
                   value={field.state.value}
@@ -121,6 +133,7 @@ export const RecommendTripsForm: React.FC = () => {
             <form.AppField name="resource.rarity">
               {(field) => (
                 <field.Input
+                  name={field.name}
                   type="text"
                   label="Rarity"
                   value={field.state.value}
