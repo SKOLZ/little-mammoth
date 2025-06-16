@@ -1,13 +1,17 @@
-import { Trip } from "@/types/trip";
+"use client";
+
+import { useTripRecommendationsContext } from "@/app/context/tripRecommendationsContext";
 import { RecommendedTrip } from "./_components/recommendedTrip";
 import styles from "./styles.module.scss";
 import cn from "classnames";
 
-interface Props {
-  trips: Array<Trip>;
-}
+export const RecommendedTrips: React.FC = () => {
+  const { trips } = useTripRecommendationsContext();
 
-export const RecommendedTrips: React.FC<Props> = ({ trips }) => {
+  if (trips.length === 0) {
+    return null;
+  }
+
   return (
     <section className={cn(styles.recommendedTrips)}>
       {trips.map((trip, index) => (

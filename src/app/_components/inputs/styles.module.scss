@@ -11,6 +11,11 @@
   font-weight: 300;
 }
 
+.inputWrapper {
+  position: relative;
+  margin-block-end: 1.25rem;
+}
+
 .input {
   @extend .text-1;
   border-radius: 8px;
@@ -19,6 +24,7 @@
   color: var(--neutral-25);
   padding: 0.375rem 1rem;
   caret-color: var(--neutral-25);
+  width: 100%;
   transition: border-color 0.5s ease;
 
 
@@ -26,4 +32,13 @@
     outline: none;
     border-color: var(--primary-500);
   }
+
+  &:has( + .inputError) {
+    border-color: var(--error-500);
+  }
+}
+
+.inputError {
+  position: absolute;
+  top: 100%;
 }

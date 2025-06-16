@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tanstack/react-form": "^1.6.3",
     "classnames": "^2.5.1",
     "next": "15.2.4",
     "react": "^19.0.0",
