@@ -29,3 +29,9 @@
 .field {
   flex: 1;
 }
+
+@media (max-width: 640px) {
+  .fieldGroup {
+    flex-direction: column;
+  }
+}

@@ -34,6 +34,7 @@ export const Select: React.FC<Props> = ({
           {...props}
         >
           <button>
+            {/* @ts-ignore */}
             <selectedcontent className={selectStyles.selectedContent} />
             <span className={selectStyles.selectArrow} />
           </button>

@@ -16,12 +16,14 @@ export const Logo: React.FC<Props> = ({ typeLogo = "full" }) => {
             alt="Cute mammoth with a bag of items in its back"
             width={130}
             height={120}
+            className={styles.logoIcon}
           />
           <Image
             src="/assets/logotype.svg"
             alt="Little Mammoth"
             width={345}
             height={100}
+            className={styles.logoText}
           />
         </div>
       );

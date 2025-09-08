@@ -3,3 +3,17 @@
   gap: 14px;
   align-items: end;
 }
+
+.logoIcon,
+.logoText {
+  height: auto;
+  min-width: 0;
+}
+
+.logoIcon {
+  flex-shrink: 130;
+}
+
+.logoText {
+  flex-shrink: 345;
+}
