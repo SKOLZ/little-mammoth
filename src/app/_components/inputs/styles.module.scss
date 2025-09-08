@@ -8,8 +8,14 @@
 
 .label {
   @extend .text-1;
+  color: var(--neutral-25);
   font-weight: 300;
+
+  &:has(+ .inputWrapper .input:focus) {
+    color: var(--primary-500);
+  }
 }
+
 
 .inputWrapper {
   position: relative;
@@ -21,7 +27,7 @@
   border-radius: 8px;
   border: 1px solid var(--neutral-400);
   background-color: var(--neutral-500);
-  color: var(--neutral-25);
+  color: var(--white);
   padding: 0.375rem 1rem;
   caret-color: var(--neutral-25);
   width: 100%;

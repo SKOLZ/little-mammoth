@@ -1,21 +1,51 @@
-select,
-::picker(select) {
-  appearance: base-select;
-  font: -webkit-small-control;
+.selectOption::checkmark,
+.selectInput::picker-icon {
+  display: none;
 }
 
-// .selectArrow {
+.selectInput {
+  anchor-name: attr(id);
+}
 
-// }
+::picker(select) {
+  border-radius: 8px;
+  padding: 0;
+  border: 1px solid var(--neutral-400);
+  background: var(--neutral-600);
+  margin-block: 4px;
+  position-anchor: attr(id);
+  top: anchor(bottom);
+}
 
-// .selectItem {
+.selectOption {
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px;
+  color: var(--white);
 
-// }
+  &:hover {
+    background: var(--neutral-800);
+  }
+}
 
-// .selectItemIcon {
+.selectArrow {
+  align-self: center;
+  transition: rotate 0.25s;
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='Layer_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 66.49 42.37'%3E%3Cdefs%3E%3Cstyle%3E .cls-1 %7B fill: %237e7685; stroke-width: 0px; %7D %3C/style%3E%3C/defs%3E%3Cpath class='cls-1' d='M3.96,0h58.57c3.37,0,5.2,3.95,3.01,6.52l-29.28,34.46c-1.58,1.86-4.45,1.86-6.03,0L.95,6.52C-1.23,3.95.59,0,3.96,0Z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 0.5rem;
+  height: 0.5rem;
 
-// }
+  .selectInput:open & {
+    rotate: x 180deg;
+  }
+}
 
-// .selectItemLabel {
-
-// }
+.selectedContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}

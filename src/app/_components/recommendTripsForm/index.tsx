@@ -42,6 +42,7 @@ export const RecommendTripsForm: React.FC<Props> = ({
               groupClassName={styles.field}
               defaultValue={initialValues?.weight}
               error={errors?.weight?.[0]}
+              id="weight"
             />
             <TextField
               type="number"
@@ -50,6 +51,7 @@ export const RecommendTripsForm: React.FC<Props> = ({
               name="budget"
               defaultValue={initialValues?.budget}
               error={errors?.budget?.[0]}
+              id="budget"
             />
           </div>
         </fieldset>
@@ -62,31 +64,32 @@ export const RecommendTripsForm: React.FC<Props> = ({
               name="type"
               label="Type"
               groupClassName={styles.field}
+              id="type"
               items={[
-                {
-                  value: "HIDE",
-                  label: "Hide",
-                  // imagePath: "/assets/selectIcons/hide_icon.png",
-                },
                 {
                   value: "FIBER",
                   label: "Fiber",
-                  // imagePath: "/assets/selectIcons/fiber_icon.png",
+                  imagePath: "/assets/selectIcons/fiber_icon.png",
+                },
+                {
+                  value: "HIDE",
+                  label: "Hide",
+                  imagePath: "/assets/selectIcons/hide_icon.png",
                 },
                 {
                   value: "ORE",
                   label: "Ore",
-                  // imagePath: "/assets/selectIcons/ore_icon.png",
+                  imagePath: "/assets/selectIcons/ore_icon.png",
                 },
                 {
                   value: "ROCK",
                   label: "Rock",
-                  // imagePath: "/assets/selectIcons/rock_icon.png",
+                  imagePath: "/assets/selectIcons/rock_icon.png",
                 },
                 {
                   value: "WOOD",
                   label: "Wood",
-                  // imagePath: "/assets/selectIcons/log_icon.png",
+                  imagePath: "/assets/selectIcons/log_icon.png",
                 },
               ]}
               defaultValue={initialValues?.type}
@@ -96,31 +99,32 @@ export const RecommendTripsForm: React.FC<Props> = ({
               name="tier"
               label="Tier"
               groupClassName={styles.field}
+              id="tier"
               items={[
                 {
                   value: "4",
                   label: "Tier 4",
-                  // imagePath: "/assets/selectIcons/tier_IV_icon.png",
+                  imagePath: "/assets/selectIcons/tier_IV_icon.png",
                 },
                 {
                   value: "5",
                   label: "Tier 5",
-                  // imagePath: "/assets/selectIcons/tier_V_icon.png",
+                  imagePath: "/assets/selectIcons/tier_V_icon.png",
                 },
                 {
                   value: "6",
                   label: "Tier 6",
-                  // imagePath: "/assets/selectIcons/tier_VI_icon.png",
+                  imagePath: "/assets/selectIcons/tier_VI_icon.png",
                 },
                 {
                   value: "7",
                   label: "Tier 7",
-                  // imagePath: "/assets/selectIcons/tier_VII_icon.png",
+                  imagePath: "/assets/selectIcons/tier_VII_icon.png",
                 },
                 {
                   value: "8",
                   label: "Tier 8",
-                  // imagePath: "/assets/selectIcons/tier_VIII_icon.png",
+                  imagePath: "/assets/selectIcons/tier_VIII_icon.png",
                 },
               ]}
               defaultValue={initialValues?.tier}
@@ -129,32 +133,33 @@ export const RecommendTripsForm: React.FC<Props> = ({
             <Select
               name="rarity"
               label="Rarity"
+              id="rarity"
               groupClassName={styles.field}
               items={[
                 {
                   value: "0",
                   label: "Common",
-                  // imagePath: "/assets/selectIcons/common_icon.png",
+                  imagePath: "/assets/selectIcons/common_icon.png",
                 },
                 {
                   value: "1",
                   label: "Uncommon",
-                  // imagePath: "/assets/selectIcons/uncommon_icon.png",
+                  imagePath: "/assets/selectIcons/uncommon_icon.png",
                 },
                 {
                   value: "2",
                   label: "Rare",
-                  // imagePath: "/assets/selectIcons/rare_icon.png",
+                  imagePath: "/assets/selectIcons/rare_icon.png",
                 },
                 {
                   value: "3",
                   label: "Epic",
-                  // imagePath: "/assets/selectIcons/epic_icon.png",
+                  imagePath: "/assets/selectIcons/epic_icon.png",
                 },
                 {
                   value: "4",
                   label: "Legendary",
-                  // imagePath: "/assets/selectIcons/legendary_icon.png",
+                  imagePath: "/assets/selectIcons/legendary_icon.png",
                 },
               ]}
               defaultValue={initialValues?.rarity}

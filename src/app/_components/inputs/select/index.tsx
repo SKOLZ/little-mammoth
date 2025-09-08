@@ -1,5 +1,6 @@
 import cn from "classnames";
 import inputStyles from "../styles.module.scss";
+import selectStyles from "./styles.module.scss";
 import NextImage from "next/image";
 
 interface Props extends React.InputHTMLAttributes<HTMLSelectElement> {
@@ -27,16 +28,28 @@ export const Select: React.FC<Props> = ({
         {label}
       </label>
       <div className={inputStyles.inputWrapper}>
-        <select id={id} className={inputStyles.input} {...props}>
+        <select
+          id={id}
+          className={cn(inputStyles.input, selectStyles.selectInput)}
+          {...props}
+        >
+          <button>
+            <selectedcontent className={selectStyles.selectedContent} />
+            <span className={selectStyles.selectArrow} />
+          </button>
           {items.map((item) => (
-            <option key={item.value} value={item.value}>
+            <option
+              key={item.value}
+              value={item.value}
+              className={selectStyles.selectOption}
+            >
               {item.imagePath && (
                 <NextImage
                   width={20}
                   height={20}
                   src={item.imagePath}
                   alt={item.label}
-                  className={inputStyles.selectIcon}
+                  className={selectStyles.selectIcon}
                 />
               )}
               {item.label}
