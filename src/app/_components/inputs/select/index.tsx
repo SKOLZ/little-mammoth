@@ -34,7 +34,7 @@ export const Select: React.FC<Props> = ({
           {...props}
         >
           <button>
-            {/* @ts-expect-error */}
+            {/* @ts-expect-error: the element is only supported in chrome and will fallback to a normal select if it doesn't exist. */}
             <selectedcontent className={selectStyles.selectedContent} />
             <span className={selectStyles.selectArrow} />
           </button>
