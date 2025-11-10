@@ -17,6 +17,7 @@ export const Logo: React.FC<Props> = ({ typeLogo = "full" }) => {
             width={130}
             height={120}
             className={styles.logoIcon}
+            loading="eager"
           />
           <Image
             src="/assets/logotype.svg"
@@ -24,6 +25,7 @@ export const Logo: React.FC<Props> = ({ typeLogo = "full" }) => {
             width={345}
             height={100}
             className={styles.logoText}
+            loading="eager"
           />
         </div>
       );
