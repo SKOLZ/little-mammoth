@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   experimental: {
     useLightningcss: true,
   },
+  cacheComponents: true,
 };
 
 export default nextConfig;
