@@ -17,7 +17,7 @@ export default function Home({
       <Suspense fallback={<RecommendTripsFormLayout isDisabled={true} />}>
         <RecommendTripsForm searchParams={searchParams} />
       </Suspense>
-      <Suspense fallback={<div>Loading recommendations...</div>}>
+      <Suspense fallback={null}>
         <RecommendedTrips searchParams={searchParams} />
       </Suspense>
     </section>

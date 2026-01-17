@@ -3,11 +3,10 @@ import styles from "./styles.module.scss";
 import cn from "classnames";
 import { Trip } from "@/types/trip";
 import { RecommendTripsFormParams } from "@/types/RecommendTripsFormParams";
-import { preprocess, z } from "zod";
 import { getTripRecommendations } from "@/services/tripRecommendations";
 import { recommendTripsFormSchema } from "@/schema/recommendTripsFormSchema";
-
-
+import { Suspense } from "react";
+import { RecommendedTripsSkeleton } from "./_components/recommendedTripsSkeleton";
 
 interface Props {
   searchParams: Promise<RecommendTripsFormParams>;
@@ -23,18 +22,44 @@ export const RecommendedTrips: React.FC<Props> = async ({ searchParams }) => {
   let result = recommendTripsFormSchema.safeParse(params);
 
   if (!result.success) {
-    return <div>No trips match the specified attributes</div>
+    return <div>No trips match the specified attributes</div>;
   }
 
+  return (
+    <Suspense
+      fallback={
+        <section className={cn(styles.recommendedTrips)}>
+          <RecommendedTripsSkeleton amount={3} />
+        </section>
+      }
+    >
+      <RecommendedTripsInner parsedParams={result.data} />
+    </Suspense>
+  );
+};
+
+interface RecommendedTripsInnerProps {
+  parsedParams: Pick<
+    Required<RecommendTripsFormParams>,
+    "type" | "tier" | "rarity"
+  > & {
+    weight: number;
+    budget: number;
+  };
+}
+
+const RecommendedTripsInner: React.FC<RecommendedTripsInnerProps> = async ({
+  parsedParams,
+}) => {
   let trips: Array<Trip> = await getTripRecommendations<Trip[]>({
     constraints: {
-      weight: parseInt(params.weight!),
-      budget: parseInt(params.budget!),
+      weight: parsedParams.weight,
+      budget: parsedParams.budget,
     },
     resource: {
-      type: params.type!,
-      tier: params.tier!,
-      rarity: params.rarity!,
+      type: parsedParams.type,
+      tier: parsedParams.tier,
+      rarity: parsedParams.rarity,
     },
   });
 
