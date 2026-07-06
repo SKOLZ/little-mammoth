@@ -3,17 +3,12 @@
   display: none;
 }
 
-.selectInput {
-  anchor-name: attr(id);
-}
-
 ::picker(select) {
   border-radius: 8px;
   padding: 0;
   border: 1px solid var(--neutral-400);
   background: var(--neutral-600);
   margin-block: 4px;
-  position-anchor: attr(id);
   top: anchor(bottom);
 }
 

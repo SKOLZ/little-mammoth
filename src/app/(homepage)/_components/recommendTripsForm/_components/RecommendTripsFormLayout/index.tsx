@@ -6,10 +6,9 @@ import { TextField } from "@/app/_components/inputs/textField";
 import { Select } from "@/app/_components/inputs/select";
 import styles from "./styles.module.scss";
 
-
 interface Props {
   isDisabled?: boolean;
-  initialValues?: RecommendTripsFormParams
+  initialValues?: RecommendTripsFormParams;
   errors?: {
     weight?: string[];
     budget?: string[];
@@ -19,7 +18,11 @@ interface Props {
   };
 }
 
-export const RecommendTripsFormLayout: React.FC<Props> = ({initialValues, isDisabled, errors}) => {
+export const RecommendTripsFormLayout: React.FC<Props> = ({
+  initialValues,
+  isDisabled,
+  errors,
+}) => {
   return (
     <Form action="/" className={styles.recommendTripsForm}>
       <div className={cn("surface-1", styles.recommendTripsFormFields)}>
@@ -169,4 +172,4 @@ export const RecommendTripsFormLayout: React.FC<Props> = ({initialValues, isDisa
       <Button type="submit">Make it fly!</Button>
     </Form>
   );
-} 
+};
