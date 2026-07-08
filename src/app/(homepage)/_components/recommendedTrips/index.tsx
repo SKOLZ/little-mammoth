@@ -15,14 +15,10 @@ interface Props {
 export const RecommendedTrips: React.FC<Props> = async ({ searchParams }) => {
   const params = await searchParams;
 
-  if (!params || Object.keys(params).length === 0) {
-    return null;
-  }
-
   let result = recommendTripsFormSchema.safeParse(params);
 
   if (!result.success) {
-    return <div>No trips match the specified attributes</div>;
+    return null;
   }
 
   return (
@@ -68,6 +64,14 @@ const RecommendedTripsInner: React.FC<RecommendedTripsInnerProps> = async ({
       {trips.map((trip, index) => (
         <RecommendedTrip trip={trip} key={index} position={index + 1} />
       ))}
+      {trips.length === 0 && (
+        <div className={styles.noTrips}>
+          <p className="title-1 primary">No trips found</p>
+          <p className="body-1 secondary">
+            Try adjusting your constraints or resource selection.
+          </p>
+        </div>
+      )}
     </section>
   );
 };

@@ -1,18 +1,28 @@
 import { preprocess, z } from "zod";
 
 export const recommendTripsFormSchema = z.object({
-  weight: preprocess((val) => {
-    if (typeof val !== "string" || val === "") {
-      return undefined;
-    }
-    return parseInt(val);
-  }, z.coerce.number({ errorMap: () => ({ message: "Weight is required" }) }).min(0, { message: "Weight cannot be negative" })),
-  budget: preprocess((val) => {
-    if (typeof val !== "string" || val === "") {
-      return undefined;
-    }
-    return parseInt(val);
-  }, z.coerce.number({ errorMap: () => ({ message: "Budget is required" }) }).min(0, { message: "Budget cannot be negative" })),
+  weight: preprocess(
+    (val) => {
+      if (typeof val !== "string" || val === "") {
+        return undefined;
+      }
+      return parseInt(val);
+    },
+    z.coerce
+      .number({ errorMap: () => ({ message: "Weight is required" }) })
+      .min(1, { message: "Weight cannot be negative or zero" }),
+  ),
+  budget: preprocess(
+    (val) => {
+      if (typeof val !== "string" || val === "") {
+        return undefined;
+      }
+      return parseInt(val);
+    },
+    z.coerce
+      .number({ errorMap: () => ({ message: "Budget is required" }) })
+      .min(1, { message: "Budget cannot be negative or zero" }),
+  ),
   type: z.enum(["HIDE", "FIBER", "ORE", "ROCK", "WOOD"], {
     errorMap: () => ({ message: "Select at least one type" }),
   }),
